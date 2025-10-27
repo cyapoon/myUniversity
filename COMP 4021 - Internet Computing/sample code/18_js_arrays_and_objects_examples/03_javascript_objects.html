@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Objects</title>
+</head>
+<body>
+    <h1>JavaScript Objects</h1>
+    <p>You need to see the output in the console.</p>
+    <script>
+    console.log("1) Creating an object:");
+    const boyfriend = {
+        name: "Lok Man",
+        height: 175, weight: 65
+    };
+    console.log("const boyfriend = { name: \"Lok Man\", height: 175, weight: 65 };");
+    console.log("boyfriend =", boyfriend);
+
+    // Referring to a property
+    console.log("\n2) Referring to a property:");
+    console.log("boyfriend.name is", boyfriend.name);
+    console.log("boyfriend[\"name\"] is", boyfriend["name"]);
+
+    // Adding a property
+    console.log("\n3) Adding a property:");
+    boyfriend.group = "Mirror";
+    console.log("boyfriend.group = \"Mirror\";");
+    console.log("boyfriend =", boyfriend);
+
+    // Removing a property
+    console.log("\n4) Removing a property:");
+    delete boyfriend.group;
+    console.log("delete boyfriend.group;");
+    console.log("boyfriend =", boyfriend);
+
+    // Using a for...in loop
+    console.log("\n5) Using for...in loop:");
+    for (const key in boyfriend) {
+        console.log(key, ":", boyfriend[key]);
+    }
+    </script>
+</body>
+</html>
+

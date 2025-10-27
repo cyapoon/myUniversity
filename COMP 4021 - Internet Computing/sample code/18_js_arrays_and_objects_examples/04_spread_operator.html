@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Spread Operator</title>
+</head>
+<body>
+    <h1>JavaScript Spread Operator</h1>
+    <p>You need to see the output in the console.</p>
+    <script>
+    // Using the spread operator with arrays
+    console.log("1) Using the spread operator with arrays:");
+    const prices = [5.5, 10, "FREE", 8];
+    console.log("prices =", prices);
+    console.log("prices is", ...prices);
+
+    // Copying using spread
+    console.log("\n2) Copying arrays using the spread operator:");
+    const pricesCopy = [...prices];
+    console.log("const pricesCopy = [...prices];");
+    console.log("pricesCopy =", pricesCopy);
+
+    // Extending using spread
+    console.log("\n3) Extending arrays using the spread operator:");
+    const newPrices = [...prices, 7, 9.5];
+    console.log("const newPrices = [...prices, 7, 9.5];");
+    console.log("newPrices =", newPrices);
+
+    // Using spread with objects
+    const boyfriend = {
+        name: "Lok Man",
+        height: 175, weight: 65
+    };
+    {
+        console.log("\n4) Extending objects using the spread operator:");
+        console.log("boyfriend =", boyfriend);
+        const bf = {...boyfriend, group: "Mirror"};
+        console.log("const bf = {...boyfriend, group: \"Mirror\"};");
+        console.log("bf =", bf);
+    }
+
+    // Using named property
+    {
+        console.log("\n5) Using variables to extend objects:");
+        const group = "Mirror";
+        const bf = {...boyfriend,  group };
+        console.log("const group = \"Mirror\";");
+        console.log("const bf = {...boyfriend,  group };");
+        console.log("bf =", bf);
+    }
+
+    </script>
+</body>
+</html>
+

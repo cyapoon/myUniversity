@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SVG With Script</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         width="300" height="200">
+
+        <g id="right-eye">
+            <ellipse cx="100" cy="100" rx="40" ry="60"
+                     stroke="black" stroke-width="4" fill="white" />
+            <ellipse cx="110" cy="110" rx="20" ry="30" fill="black" />
+        </g>
+
+        <g id="left-eye">
+            <ellipse cx="200" cy="100" rx="40" ry="60"
+                     stroke="black" stroke-width="4" fill="white" />
+            <ellipse cx="190" cy="110" rx="20" ry="30" fill="black" />
+        </g>
+
+    </svg>
+
+    <script>
+    $("#right-eye").on("click", function() {
+        alert("Ouch! My right eye!");
+    });
+
+    $("#left-eye").on("click", function() {
+        alert("Ouch! My left eye!");
+    });
+    </script>
+</body>
+</html>

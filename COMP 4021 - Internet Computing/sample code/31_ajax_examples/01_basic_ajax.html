@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic AJAX</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h3>Hong Kong Weather Forecast</h3>
+    <pre id="result"></pre>
+    <script>
+    $(function() {
+        fetch("https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=flw")
+            .then((response) => response.json())
+            .then((data) => {
+                // Format the JSON data and show it in the <pre>
+                $("#result").text(JSON.stringify(data, null, "  "));
+            })
+            .catch((error) => {
+                // Show the error
+                $("#result").text(error);
+            });
+    });
+    </script>
+</body>
+</html>

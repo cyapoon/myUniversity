@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Using Post Method</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h4>Choose your colour:</h4>
+    <select id="name">
+        <option>Happy</option>
+        <option>Sad</option>
+        <option>Angry</option>
+        <option>Fear</option>
+    </select>
+    <button id="go-button">Go!</button>
+    <script>
+    $(function() {
+        $("#go-button").on("click", () => {
+            const data = { name: $("#name").val() };
+            fetch("/getcolor", {
+                method: "POST",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify(data)
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                // Get the JSON data and change the background colour
+                $("body").css("background", data.color);
+            })
+        });
+    });
+    </script>
+</body>
+</html>

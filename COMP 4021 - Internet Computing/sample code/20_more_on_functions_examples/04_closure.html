@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>An Example Closure</title>
+</head>
+<body>
+    <h1>An Example Closure</h1>
+    <p>You need to see the output from the console.</p>
+    <script>
+    function greeting(name) {
+        return function () {
+            console.log("Hi, " + name + "!");
+        };
+    }
+
+    const sayHi = greeting("Peter");
+    sayHi();
+    </script>
+</body>
+</html>

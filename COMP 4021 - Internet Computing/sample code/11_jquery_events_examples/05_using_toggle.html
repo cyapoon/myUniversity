@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Using Toggle</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <button>Click Me!</button>
+    <p>
+    You can click on the above button
+    to see how this paragraph is shown
+    or hidden on the page.
+    </p>
+    <script>
+    $(function() {
+        $("button").on("click", function() {
+            let p = $("p");
+            p.toggle();
+        });
+    });
+    </script>
+</body>
+</html>

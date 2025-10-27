@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>An Example Function Factory</title>
+</head>
+<body>
+    <h1>An Example Function Factory</h1>
+    <script>
+    function makeMultiple(n) {
+        return x => n * x;
+    }
+
+    const double = makeMultiple(2);
+    const triple = makeMultiple(3);
+    const quad   = makeMultiple(4);
+        
+    alert("The double of 2 is " + double(2) + ".\n" +
+          "The triple of 2 is " + triple(2) + ".\n" +
+          "The quadruple of 2 is " + quad(2) + ".");
+    </script>
+</body>
+</html>

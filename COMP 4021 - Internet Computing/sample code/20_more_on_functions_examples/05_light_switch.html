@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Light Switch</title>
+</head>
+<body>
+    <h1>Light Switch</h1>
+    <button onclick="push()">Click this!</button>
+    <script>
+    function lightSwitch() {
+        let status = "Off";
+        return function() {
+            if (status == "On")
+                status = "Off";
+            else
+                status = "On";
+            alert("Light is " + status);
+        };
+    }
+    let push = lightSwitch();
+    </script>
+</body>
+</html>

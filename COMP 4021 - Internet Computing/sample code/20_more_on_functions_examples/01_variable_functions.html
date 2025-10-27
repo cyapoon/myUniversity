@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Creating Functions as Variables</title>
+</head>
+<body>
+    <h1>Creating Functions as Variables</h1>
+    <p>You need to see the output in the console.</p>
+    <script>
+    const power = function(x, y) {
+        let result = 1;
+        for (let i = 0; i < y; i++) {
+            result = result * x;
+        }
+        return result;
+    }
+    console.log("2^3 =", power(2, 3));
+    </script>
+</body>
+</html>
+

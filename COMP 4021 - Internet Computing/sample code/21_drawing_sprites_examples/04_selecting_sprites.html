@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selecting Sprite</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <p><strong>Select your sprite here:</strong></p>
+    <p><input type="range" id="sprite" min="0" max="9" value="3"></p>
+    <canvas style="border: 1px solid gray" width="600" height="400"></canvas>
+    <script>
+    $(function() {
+        const context = $("canvas").get(0).getContext("2d");
+
+        // Draw without blurring
+        context.imageSmoothingEnabled = false;
+
+        // Prepare the sprite sheet
+        const sheet = new Image();
+        sheet.onload = function() {
+            // Draw the sprite
+            context.drawImage(sheet,
+                24*3, 100, 24, 25,
+                50, 50, 120, 125);
+        };
+        sheet.src = "sprite_sheet.png";
+
+        $("#sprite").on("change", function() {
+            let sprite = $("#sprite").val();
+            context.clearRect(50, 50, 120, 125);
+            context.drawImage(sheet,
+                24 * sprite, 100, 24, 25,
+                50, 50, 120, 125);
+        });
+    });
+    </script>
+</body>
+</html>

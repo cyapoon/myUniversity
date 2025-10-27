@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="300" height="200">
+
+    <style>
+    @keyframes move-right-eye {
+        0%   { transform: translateX(0px); }
+        50%  { transform: translateX(-20px); }
+        100% { transform: translateX(0px); }
+    }
+    #right-eye {
+        animation: move-right-eye 1s;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes move-left-eye {
+        0%   { transform: translateX(0px); }
+        50%  { transform: translateX(20px); }
+        100% { transform: translateX(0px); }
+    }
+    #left-eye {
+        animation: move-left-eye 1s;
+        animation-iteration-count: infinite;
+    }
+    </style>
+
+    <g id="right-eye">
+        <ellipse cx="100" cy="100" rx="40" ry="60"
+                 stroke="black" stroke-width="4" fill="white" />
+        <ellipse cx="110" cy="110" rx="20" ry="30" fill="black" />
+    </g>
+
+    <g id="left-eye">
+        <ellipse cx="200" cy="100" rx="40" ry="60"
+                 stroke="black" stroke-width="4" fill="white" />
+        <ellipse cx="190" cy="110" rx="20" ry="30" fill="black" />
+    </g>
+
+</svg>
+

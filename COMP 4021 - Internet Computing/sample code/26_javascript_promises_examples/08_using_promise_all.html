@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Using Promise.all()</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+    <script>
+    $(document).ready(function() {
+        const apple    = new Image(),
+              orange   = new Image(),
+              carrot   = new Image(),
+              pumpkin  = new Image(),
+              eggplant = new Image();
+
+        function loadImage(img, src) {
+            img.src = src;
+            return img.decode();
+        }
+
+        const promises = [
+            loadImage(apple, "apple.png"),
+            loadImage(orange, "orange.png"),
+            loadImage(carrot, "carrot.png"),
+            loadImage(pumpkin, "pumpkin.png"),
+            loadImage(eggplant, "eggplant.png")
+        ];
+
+        Promise.all(promises)
+            .then(() => {
+                $("body").append($(apple), $(orange), $(carrot), $(pumpkin), $(eggplant));
+            })
+            .catch(() => {
+                $("body").append($("<p>The image cannot be loaded.</p>"));
+            })
+    });
+    </script>
+</body>
+</html>
+

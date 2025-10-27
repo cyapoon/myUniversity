@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Arrays</title>
+</head>
+<body>
+    <h1>JavaScript Arrays</h1>
+    <p>You need to see the output in the console.</p>
+    <script>
+    console.log("1) Creating an array:");
+    const prices = [5.5, 10, "FREE", 8];
+    console.log("const prices = [5.5, 10, \"FREE\", 8];");
+    console.log("prices =", prices);
+
+    // Changing second item to 8.5
+    console.log("\n2) Changing an item:");
+    prices[1] = 8.5;
+    console.log("prices[1] = 8.5;");
+    console.log("prices =", prices);
+
+    // Showing length
+    console.log("\n3) Showing the number of items:");
+    console.log("Length of prices =", prices.length);
+
+    // Inserting 6 at index 1
+    console.log("\n4) Inserting an item:");
+    prices.splice(1, 0, 6);
+    console.log("prices.splice(1, 0, 6);");
+    console.log("prices =", prices);
+
+    // Removing item at index 3
+    console.log("\n5) Removing an item:");
+    prices.splice(3, 1);
+    console.log("prices.splice(3, 1);");
+    console.log("prices =", prices);
+
+    // Appending item at the end
+    console.log("\n6) Appending an item:");
+    prices.push(11);
+    console.log("prices.push(11);");
+    console.log("prices =", prices);
+
+    // Using a for loop
+    console.log("\n7) Using basic for loop:");
+    for (let i = 0; i < prices.length; i++) {
+        console.log(prices[i]);
+    }
+
+    // Using a for...of loop
+    console.log("\n8) Using for...of loop:");
+    for (const price of prices) {
+        console.log(price);
+    }
+    </script>
+</body>
+</html>
+

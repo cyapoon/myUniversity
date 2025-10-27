@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Using the Click Event</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li><a href="https://hkust.edu.hk/">HKUST</a></li>
+        <li><a href="https://cse.hkust.edu.hk/">CSE Department</a></li>
+    </ul>
+    <script>
+    $(function() {
+        $("a").on("click", function() {
+            if (!confirm("Leave this page?")) {
+                return false;
+            }
+        });
+    });
+    </script>
+</body>
+</html>

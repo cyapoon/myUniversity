@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drawing One Sprite</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <canvas style="border: 1px solid gray" width="600" height="400"></canvas>
+    <script>
+    $(function() {
+        const context = $("canvas").get(0).getContext("2d");
+
+        // Prepare the sprite sheet
+        const sheet = new Image();
+        sheet.onload = function() {
+            // Draw the sprite
+            context.drawImage(sheet,
+                24*3, 100, 24, 25,
+                50, 50, 24, 25
+            );
+        };
+        sheet.src = "sprite_sheet.png";
+    });
+    </script>
+</body>
+</html>

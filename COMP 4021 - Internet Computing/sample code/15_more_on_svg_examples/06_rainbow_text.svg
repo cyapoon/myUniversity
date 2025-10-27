@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="600" height="200">
+
+    <defs> 
+        <linearGradient id="rainbow-gradient">
+            <stop offset="0.05" stop-color="red" /> 
+            <stop offset="0.15" stop-color="orange" /> 
+            <stop offset="0.3"  stop-color="yellow" /> 
+            <stop offset="0.45" stop-color="green" /> 
+            <stop offset="0.60" stop-color="blue" /> 
+            <stop offset="0.75" stop-color="indigo" /> 
+            <stop offset="0.9"  stop-color="violet" />
+        </linearGradient> 
+    </defs>
+
+    <text x="0" y="150"
+          font-family="Arial"
+          font-size="100px"
+          fill="url(#rainbow-gradient)">
+        RAINBOW
+    </text>
+
+</svg>
+

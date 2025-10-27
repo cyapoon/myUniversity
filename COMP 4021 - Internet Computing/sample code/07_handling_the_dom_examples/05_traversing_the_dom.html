@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traversing the DOM</title>
+</head>
+<body>
+    <ol>
+        <li>Breakfast <b>$15.00</b></li>
+        <li>Lunch <b>$25.00</b></li>
+        <li>Dinner <b>$50.00</b>
+            <ul>
+                <li>Main course <b>$30.00</b></li>
+                <li>Desert <b>$20.00</b></li>
+            </ul>
+        </li>
+    </ol>
+    <script>
+    document.documentElement.
+             lastChild.
+             childNodes[1].
+             childNodes[1].
+             lastChild.
+             innerHTML = "$20.00"; 
+    </script>
+</body>
+</html>

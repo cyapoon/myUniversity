@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jumping Game</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- This is the font returned from Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+    /* Style to make the svg fit in the browser */
+    body { padding: 0; margin: 0; }
+    svg  { width: 100%; height: auto; }
+
+    @keyframes cloud-animation{
+        from  {transform: translateX(1000px);}
+        to {transform: translateX(-120px);}
+    }
+    #cloud1 {
+        animation-name: cloud-animation;
+        animation-timing-function: linear;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+
+    }
+    #cloud2 {
+        animation-name: cloud-animation;
+        animation-timing-function: linear;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-delay: -5s;
+    }
+
+    @keyframes obstacle-animation{
+        from  {transform: translateX(1000px);}
+        to {transform: translateX(-120px);}
+    }
+    #obstacle {
+        animation-name: none;
+        animation-timing-function: linear;
+        animation-duration: 5s;
+        /* animation-iteration-count: infinite; */
+        display: none;
+    }
+
+    @keyframes player-animation{
+        0% {transform: translateY(0px);}
+        50% {transform: translateY(-50px);}
+        100% {transform: translateY(0px);}
+    }
+
+    @keyframes player_stop_animation{
+        from {transform: translateY(0px);}
+        to {transform: translateX(0px);}
+    }
+    #player{
+        animation-name: none;
+        /* animation-name: player_stop_animation; */
+        animation-timing-function: linear;
+        animation-duration: 0.5s;
+        /* animation-iteration-count: infinite; */
+        transform: translate(0,0);
+    }
+
+    @keyframes spin{
+        from{transform: rotate(0deg);}
+        to{transform: rotate(1440deg);}
+    }
+
+    /* The container moves the text to the middle of the screen */
+    #gameover-container {
+        transform: translate(500px,200px);
+    }
+    #gameover {
+        font-family: Dosis, sans-serif;
+
+    }
+    </style>
+    <script>
+    // Check whether the game is over if the player is near the obstacle
+    function checkGameover() {
+
+        // You need to keep on checking for the gameover situation here
+
+        // Read the transform property of the player and obstacle
+        let trans_player = $("#player").css("transform");
+        let trans_obstacle = $("#obstacle").css("transform");
+        // console.log(trans_player);
+        // console.log(trans_obstacle);
+
+        // Extract the appropriate numbers
+        y_player = parseFloat(trans_player.split(",")[5]);
+        // console.log(y_player);
+        x_obstacle = parseFloat(trans_obstacle.split(",")[4]);
+        // console.log(parseFloat(x_obstacle));
+
+        // Compare the numbers for the gameover situation
+        if((y_player>= -5 )  && (x_obstacle >= 28 && x_obstacle <= 87)){
+
+            // console.log("hole")
+            $("#player").css("animation-play-state","paused");
+            $(".cloud").css("animation-play-state","paused");
+            $("#obstacle").css("animation-play-state","paused");
+            // console.log(x_obstacle);
+
+            $("#gameover").show();
+            $("#gameover").css("animation","spin 0.8s");
+            return;
+        }
+        // Request to check again
+        setTimeout(checkGameover, 100);
+    }
+
+    // Make an obstacle by starting the obstacle animation
+    function makeObstacle() {
+
+        // You need to show the obstacle and start the animation here
+        $("#obstacle").show();
+        $("#obstacle").css("animation-name","obstacle-animation");
+    }
+
+    // Make the player jump by starting the player animation
+    function jump() {
+
+        // You need to start the player jumping animation here
+        $("#player").css("animation-name","player-animation");
+        
+    }
+
+    $(function () {
+        // Handle the spacebar key for controlling the player
+        $(document).on("keydown", function(e) {
+            // The player jumps if the spacebar key is down
+            if (e.keyCode == 32)
+                jump();
+
+        });
+
+        // The obstacle animation has finished
+        $("#obstacle").on("animationend", function() {
+
+            // You need to hide the obstacle and stop the animation here
+            $("#obstacle").hide();
+            $("#obstacle").css("animation-name","none");
+            let cur_duration = parseFloat($("#obstacle").css("animation-duration"));
+            // console.log(cur_duration);
+            if(cur_duration > 2.5){
+                $("#obstacle").css("animation-duration",cur_duration*0.9 + "s");
+            }
+            
+            // You will make another obstacle later
+            setTimeout(makeObstacle, Math.random() * 2000);
+        });
+
+        // The player animation has finished
+        $("#player").on("animationend", function() {
+
+            // You need to stop the animation here
+            $("#player").css("animation-name","none");
+            // $("#player").css("animation-name","player_stop_animation");
+            
+
+        });
+
+        // Start the obstacle animation
+        setTimeout(makeObstacle, Math.random() * 2000);
+
+        // Start the game over checking
+        setTimeout(checkGameover, 100);
+    });
+    </script>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400">
+        
+         <defs>
+            <linearGradient x2="0" y2="1" id="sky_color">
+                <stop offset="0" stop-color="blue"></stop>
+                <stop offset="1" stop-color="skyblue"></stop>
+            </linearGradient>
+            <linearGradient x2="0" y2="1" id="ground_color">
+                <stop offset="0" stop-color="lightgreen"></stop>
+                <stop offset="1" stop-color="darkgreen"></stop>
+            </linearGradient>
+            <radialGradient fx="50%" fy="0%" cx="50%" cy="0%" r="60%" id="obstacle_color">
+                <stop offset="0" stop-color="brown"></stop>
+                <stop offset="1" stop-color="black"></stop>
+            </radialGradient>
+         </defs>
+        
+        <g>
+            <g id="sky">
+                <rect stroke="null" x="0" y="0" height="200" width="1000" fill="url(#sky_color)" ></rect>
+            </g>
+            <g id="ground">
+                <rect stroke="null" x="0" y="200" height="75" width="1000" fill="url(#ground_color)"></rect>
+            </g>
+            <g id="obstacle">
+            <rect stroke="null" x="0" y="200" height="75" width="80" fill="url(#obstacle_color)" ></rect>
+            </g>
+            <g id="cloud1" class="cloud">
+            <rect stroke="null" x="0" y="0" height="25" width="100" fill="white" rx="10" ry="10"></rect>
+            </g>
+            <g id="cloud2" class="cloud">
+                <rect stroke="null" x="0" y="50" height="25" width="100" fill="white" rx="10" ry="10"></rect>
+                </g>
+            <g id="player">
+                <circle r="10" cx="100" cy="135" fill="black"></circle>
+                <rect stroke="null" x="87" y="145" height="30" width="25" fill="black"></rect>
+                <rect stroke="null" x="90" y="175" height="30" width="5" fill="black"></rect>
+                <rect stroke="null" x="103" y="175" height="30" width="5" fill="black"></rect>
+            </g>
+        </g>
+        
+
+        <!-- The game over text -->
+
+        <g id="gameover-container">
+            <text id="gameover" x="0" y="0" fill="red"
+                  font-size="80px" text-anchor="middle" display="none">Game Over</text>
+        </g>
+    </svg>
+</html>

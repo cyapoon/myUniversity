@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Destructuring</title>
+</head>
+<body>
+    <h1>JavaScript Destructuring</h1>
+    <p>You need to see the output in the console.</p>
+    <script>
+    // Using destructuring with objects
+    const members = {
+        kids: 32,
+        teenagers: 20, 
+        adults: 8 };
+
+    {
+        console.log("1) Using destructuring with objects:");
+        console.log("members =", members);
+        const { kids, teenagers, adults } = members;
+        console.log("const { kids, teenagers, adults } = members;");
+        console.log("kids =", kids);
+        console.log("teenagers =", teenagers);
+        console.log("adults =", adults);
+    }
+
+    // Making new objects
+    {
+        console.log("\n2) Making new objects:");
+        console.log("members =", members);
+        const { kids, teenagers } = members;
+        const youngMembers = { kids, teenagers };
+        console.log("const { kids, teenagers } = members;");
+        console.log("const youngMembers = { kids, teenagers };");
+        console.log("youngMembers =", youngMembers);
+    }
+
+    // Using destructuring with arrays
+    console.log("\n3) Using destructuring with arrays:");
+    const prices = [5.5, 10, "FREE", 8];
+    console.log("prices =", prices);
+    const [ price1, price2 ] = prices;
+    console.log("const [ price1, price2 ] = prices;");
+    console.log("price1 =", price1);
+    console.log("price2 =", price2);
+    </script>
+</body>
+</html>
+

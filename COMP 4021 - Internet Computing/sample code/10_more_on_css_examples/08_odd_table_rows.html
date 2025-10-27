@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alternating Table Rows</title>
+    <style>
+    tbody tr:nth-child(odd) { background: lightgray; }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Selector</th><th>Syntax</th><th>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tag Name</td><td><em>[tag name]</em></td><td><code>h1</code></td>
+            </tr>
+            <tr>
+                <td>Id</td><td><code>#</code><em>[id]</em></td><td><code>#name</code></td>
+            </tr>
+            <tr>
+                <td>Class</td><td><code>.</code><em>[class]</em></td><td><code>.highlight</code></td>
+            </tr>
+            <tr>
+                <td>Multiple Selectors</td><td><em>[selector 1]</em><code>,</code><em>[selector 2]</em></td><td><code>h1,h2</code></td>
+            </tr>
+            <tr>
+                <td>Ancestor/Descendant</td><td><em>[ancestor]</em><code> </code><em>[decendant]</em></td><td><code>ul b</code></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browser-to-browser Communication</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h2>Browser-to-browser Communication</h2>
+
+    <h3>Current Status</h3>
+    <p>
+        <strong>My socket id:</strong>
+        <span id="id">-</span>
+    </p>
+    <p>
+        <strong>Available socket ids:</strong>
+        <span id="available">-</span>
+    </p>
+
+    <h3>Sending Message to Another Browser</h3>
+    <p>
+        <strong>To:</strong>
+        <input id="to">
+    </p>
+    <p>
+        <strong>Message:</strong>
+        <input id="message">
+        <button id="send">Send</button>
+    </p>
+
+    <h3>Messages From Other Browsers</h3>
+
+    <script src="/socket.io/socket.io.min.js"></script>
+    <script>
+    $(function() {
+        // Create the WebSocket
+        const socket = io();
+
+        // Listen for the 'id' event
+        socket.on("id", (data) => {
+            $("#id").text(data);
+        });
+
+        // Listen for the 'sockets' event
+        socket.on("sockets", (data) => {
+            $("#available").text(data);
+        });
+
+        // Listen for the 'message' event
+        socket.on("message", (data) => {
+            const { from, message } = JSON.parse(data);
+            $("body").append($("<p><strong>" + from + ": </strong>" +
+                               message + "</p>"));
+        });
+
+        $("#send").on("click", () => {
+            // Send a message to another browser
+            socket.emit("message", JSON.stringify({
+                to: $("#to").val(),
+                message: $("#message").val()
+            }));
+        });
+    });
+    </script>
+</body>
+</html>

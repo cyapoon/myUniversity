@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        <%= stock.summary.price.symbol %> -
+        <%= stock.summary.price.longName %>
+    </title>
+</head>
+<body>
+    <h1>
+        <%= stock.summary.price.symbol %> -
+        <%= stock.summary.price.longName %>
+    </h1>
+
+    <h3>Prices:</h3>
+
+    <textarea cols="80" rows="25">
+<%= JSON.stringify(stock.prices, null, "  ") %>
+    </textarea>
+</body>
+</html>
