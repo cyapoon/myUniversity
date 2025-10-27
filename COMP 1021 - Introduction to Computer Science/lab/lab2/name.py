@@ -1,0 +1,51 @@
+import turtle
+# Draw the character "P"
+turtle.up()
+turtle.goto(-100,0)
+turtle.left(90)
+turtle.down()
+turtle.forward(100)
+turtle.right(90)
+turtle.forward(50)
+turtle.right(90)
+turtle.forward(40)
+turtle.right(90)
+turtle.forward(50)
+
+# Draw the character "O"
+turtle.up()
+turtle.goto(0,100)
+turtle.down()
+turtle.left(90)
+turtle.forward(100)
+turtle.left(90)
+turtle.forward(50)
+turtle.left(90)
+turtle.forward(100)
+turtle.left(90)
+turtle.forward(50)
+
+
+# Draw the character "O"
+turtle.up()
+turtle.goto(100,100)
+turtle.down()
+turtle.left(90)
+turtle.forward(100)
+turtle.left(90)
+turtle.forward(50)
+turtle.left(90)
+turtle.forward(100)
+turtle.left(90)
+turtle.forward(50)
+
+# Draw the character "N"
+turtle.up()
+turtle.goto(200,0)
+turtle.down()
+turtle.right(90)
+turtle.forward(100)
+turtle.right(150)
+turtle.forward(115)
+turtle.left(150)
+turtle.forward(100)

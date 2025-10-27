@@ -1,0 +1,21 @@
+# Ignore zip archives
+*.zip
+
+# Python cache and bytecode
+__pycache__/
+
+
+# Common macOS files
+.DS_Store
+__MACOSX/
+._*
+.Spotlight-V100
+.Trashes
+
+*.mp4
+
+.vscode/
+
+*.o
+*.exe
+*.d
